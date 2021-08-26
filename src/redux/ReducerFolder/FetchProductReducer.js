@@ -5,26 +5,24 @@ import {
 } from '../ActionTypes/Actiontypes';
 
 const initialState = {
-	isLoading: "true",
-	products: {},
+	loading: "",
+	data: [],
 	error: ""
 }
 const FetchProductReducer = (state = initialState, action) => {
-	switch (action.payload) {
+	switch (action.type) {
 		case FETCH_PRODUCTS_REQUEST:
 			return {
-				isLoading: "true",
+				loading: "true",
 				error: ""
 			}
-		case FETCH_PRODUCTS_SUCCESS:
+		case FETCH_PRODUCTS_SUCCESS :	
 			return {
-				isLoading: "false",
-				products: action.payload,
-				error: ""
+				data: action.payload,	
 			}
 		case FETCH_PRODUCTS_FALIUR:
 			return {
-				isLoading: "false",
+				loading: "false",
 				error: action.payload,
 			}
 		default:

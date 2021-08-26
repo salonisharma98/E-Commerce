@@ -15,10 +15,11 @@ function App() {
     <Router>
       <SearchAppBar/>
       <Switch>
+      <Route path='/product'> <ProductList/></Route>
         <Route path="/">
           <Home/>
         </Route>
-      </Switch>
+      </Switch>   
       <Footer/>
     </Router>
   );

@@ -3,17 +3,16 @@ import {
 	FETCH_PRODUCTS_SUCCESS,
 	FETCH_PRODUCTS_FALIUR,
 } from '../ActionTypes/Actiontypes';
-import axios from 'axios';
 
 export const fetchProductRequest = () => {
 	return {
 		type: FETCH_PRODUCTS_REQUEST,
 	}
 }
-export const fetchProductSuccess = (products) => {
+export const fetchProductSuccess = (data) => {
 	return {
 		type: FETCH_PRODUCTS_SUCCESS,
-		payload: products
+		payload: data
 	}
 }
 export const fetchProductFaliur = (error) => {
@@ -23,19 +22,14 @@ export const fetchProductFaliur = (error) => {
 	}
 }
 export const fetchProductsData = () => {
-	//console.log("1")
 	return (dispatch) => {
-		//console.log("2")
 		dispatch(fetchProductRequest)
-		//console.log("3")
-		axios.get('/data.json').then(res => {
-			const products = res.data
-			console.log(products,"products from Action.js")
-			dispatch(fetchProductSuccess(products))
-		}).catch(error => {
-			const errormsg = error.message
-			dispatch(fetchProductFaliur(errormsg))
-		})
+		fetch('data.json').then((response)=>{
+		 return response.json()
+		}).then((data)=>{
+		  dispatch(fetchProductSuccess(data))
+		}).catch((error)=>{console.log(error)
+		dispatch(fetchProductFaliur(error))})
 	}
 }
 

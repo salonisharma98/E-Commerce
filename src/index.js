@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import store from './redux/StoreFolder/store';
- import { Provider } from 'react-redux';
- import * as serviceWorker from './serviceWorker';
-
+import { Provider } from 'react-redux';
+import * as serviceWorker from './serviceWorker';
+// store.subscribe(() => console.log(store.getState(),"store.subscribe"))
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

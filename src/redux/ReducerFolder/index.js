@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import FetchProductReducer from "./FetchProductReducer";
 
-const allReducer = combineReducers({
-    FetchProductReducer,
+const Reducer = combineReducers({
+    userReducer:FetchProductReducer,
 })
-export default allReducer;
+export default Reducer;

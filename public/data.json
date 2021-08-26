@@ -2,7 +2,7 @@
 	{
 		"id": "1",
 		"productName": "Polka Dot Printed Shirt Dress",
-		"productImage": "",
+		"productImage": "../src/images/shirtdress.jpg",
 		"brand": "Tokyo Talkies",
 		"amount": "699",
 		"material": "Polyster"
@@ -38,5 +38,30 @@
 		"brand": "Vero Moda",
 		"amount": "1200",
 		"material": "Rayon"
+	},
+	{
+		"id": "6",
+		"productName": "Straight Fit Jeans",
+		"productImage": "",
+		"brand": "Vero Moda",
+		"amount": "1200",
+		"material": "Rayon"
+	},
+	{
+		"id": "7",
+		"productName": "Shirt",
+		"productImage": "",
+		"brand": "Vero Moda",
+		"amount": "1200",
+		"material": "Rayon"
+	},
+	{
+		"id": "8",
+		"productName": "Kurti",
+		"productImage": "",
+		"brand": "Vero Moda",
+		"amount": "1200",
+		"material": "Rayon"
 	}
+
 ]

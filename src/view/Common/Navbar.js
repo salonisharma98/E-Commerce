@@ -11,23 +11,20 @@ import PersonIcon from '@material-ui/icons/Person';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    //flexGrow: 1,
-  },
   navcolor: {
     backgroundColor: "#986da2",
   },
-  iconsForOptions:{
-    display:"flex",
+  iconsForOptions: {
+    display: "flex",
   },
-  iconsMargin:{
-    marginLeft:"10px",
-    marginRight:"10px",
-    fontSize:"11px",
-    textAlign:"center"
+  iconsMargin: {
+    marginLeft: "10px",
+    marginRight: "10px",
+    fontSize: "11px",
+    textAlign: "center"
   },
   title: {
-   marginRight:50,
+    marginRight: 50,
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -42,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
     //marginLeft: 0,
     width: '100%',
-    margin:"auto",
+    margin: "auto",
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
@@ -63,16 +60,17 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    display:'flex',
+    display: 'flex',
   },
-  
+
 }));
 
 export default function SearchAppBar() {
+
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position="static" className={classes.navcolor}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
@@ -92,26 +90,26 @@ export default function SearchAppBar() {
             />
           </div>
           <div className={classes.iconsForOptions}>
-          <div className={classes.iconsMargin}>
-            <PersonIcon/>
-            <br/>
-            Login
-          </div>
-          <div className={classes.iconsMargin}>
-          <FavoriteIcon/>
-          <br/>
-          Wishlist
-          </div>
-          <div className={classes.iconsMargin}>
-          <ShoppingCartIcon/>
-          <br/>
-          Cart
-          </div>
-          <div className={classes.iconsMargin}>
-          <MoreVertIcon/>
-          <br/>
-          More
-          </div>
+            <div className={classes.iconsMargin}>
+              <PersonIcon />
+              <br />
+              Login
+            </div>
+            <div className={classes.iconsMargin}>
+              <FavoriteIcon />
+              <br />
+              Wishlist
+            </div>
+            <div className={classes.iconsMargin}>
+              <ShoppingCartIcon />
+              <br />
+              Cart
+            </div>
+            <div className={classes.iconsMargin}>
+              <MoreVertIcon />
+              <br />
+              More
+            </div>
           </div>
         </Toolbar>
       </AppBar>
