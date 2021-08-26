@@ -1,0 +1,42 @@
+[
+	{
+		"id": "1",
+		"productName": "Polka Dot Printed Shirt Dress",
+		"productImage": "",
+		"brand": "Tokyo Talkies",
+		"amount": "699",
+		"material": "Polyster"
+	},
+	{
+		"id": "2",
+		"productName": "FLoral Printed A-Line Dress",
+		"productImage": "",
+		"brand": "Harpa",
+		"amount": "849",
+		"material": "Polyster"
+	},
+	{
+		"id": "3",
+		"productName": "Power Shoulder Top",
+		"productImage": "",
+		"brand": "Athena",
+		"amount": "675",
+		"material": "Polyster"
+	},
+	{
+		"id": "4",
+		"productName": "JumpSuits",
+		"productImage": "",
+		"brand": "H&M",
+		"amount": "1000",
+		"material": "Cotton Blend"
+	},
+	{
+		"id": "5",
+		"productName": "Trousers",
+		"productImage": "",
+		"brand": "Vero Moda",
+		"amount": "1200",
+		"material": "Rayon"
+	}
+]

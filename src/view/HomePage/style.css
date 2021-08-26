@@ -1,0 +1,14 @@
+img.imageArea {
+    height: 65vh;
+    width: 100%;
+    object-fit: cover;
+}
+.MuiGrid-container {
+    height: 65vh;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+}
+.boxShadow-Content{
+  background-color: lightgray;
+  height: 65vh;
+}
