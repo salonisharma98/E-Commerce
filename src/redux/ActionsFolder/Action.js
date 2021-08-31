@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
 	FETCH_PRODUCTS_REQUEST,
 	FETCH_PRODUCTS_SUCCESS,
@@ -24,10 +25,18 @@ export const fetchProductFaliur = (error) => {
 export const fetchProductsData = () => {
 	return (dispatch) => {
 		dispatch(fetchProductRequest)
-		fetch('data.json').then((response)=>{
-		 return response.json()
+		fetch('/data.json',{
+			method:"GET",
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			}
+		}).then((resp)=>{
+		  return resp.json()
 		}).then((data)=>{
+			console.log(data,"data")
 		  dispatch(fetchProductSuccess(data))
+			
 		}).catch((error)=>{console.log(error)
 		dispatch(fetchProductFaliur(error))})
 	}

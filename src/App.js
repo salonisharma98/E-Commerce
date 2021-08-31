@@ -2,7 +2,8 @@ import React from 'react';
 import SearchAppBar from './view/Common/Navbar';
 import Home from './view/HomePage/Home';
 import Footer from './view/Common/Footer';
-import ProductList from './view/ListOfProducts/ProductList'
+import ProductList from './view/ListOfProducts/ProductList';
+import ProducSelected from './view/SelectedProduct/ProductSelected';
 
 import {
   BrowserRouter as Router,
@@ -13,14 +14,19 @@ import {
 function App() {
   return (
     <Router>
-      <SearchAppBar/>
+      <SearchAppBar />
       <Switch>
-      <Route path='/product'> <ProductList/></Route>
-        <Route path="/">
-          <Home/>
+        <Route path={`/product/:categoryProduct`}>
+          <ProductList />
         </Route>
-      </Switch>   
-      <Footer/>
+        <Route path='/selected-product/:id'>
+          <ProducSelected />
+        </Route>
+        <Route path='/'>
+          <Home />
+        </Route>
+      </Switch>
+      <Footer />
     </Router>
   );
 }

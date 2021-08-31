@@ -7,16 +7,18 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ShareIcon from '@material-ui/icons/Share';
+import ProductOptions from '../Common/ProductOptions';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
 	root: {
 		maxWidth: 245,
-		margin: "20px",
+		margin: "25px",
 		boxShadow: "1px 1px 5px 2px rgb(0 0 0 / 20%)",
 		display: "inline-block",
 		width: "100%"
@@ -30,7 +32,8 @@ const useStyles = makeStyles({
 	},
 	productlistNAmes: {
 		fontSize: "12px",
-		marginLeft: "10px"
+		marginLeft: "10px",
+		textAlign: "left !important",
 	},
 	iconimg: {
 		backgroundColor: "burlywood"
@@ -38,47 +41,59 @@ const useStyles = makeStyles({
 });
 
 const ProductList = () => {
+
 	const classes = useStyles();
 
-	const mystate = useSelector(state => state.userReducer.data);
-	console.log(mystate, "mystate")
+	const statesss = useSelector(state => state.userReducer.data);
+	console.log(statesss, "statesss")
 
 	const dispatch = useDispatch();
 
-	const getData = () => {
-		dispatch(fetchProductsData())
-	}
-
 	useEffect(() => {
-		getData()
+		dispatch(fetchProductsData())
 	}, [])
+
+	const categoryProduct = useParams()
+	const id=useParams()
+
+	let getCategorizedProducts = []
+
+	statesss.map(function (e, i) {
+		if (e.category === categoryProduct.categoryProduct) {
+			getCategorizedProducts.push(e)
+		}
+	})
 
 	return (
 		<div>
+			<ProductOptions />
 			<ul className={classes.ulStyling}>
 				<li>
-					{mystate.map((number) =>
+					{getCategorizedProducts.map((number) =>
 						<Card className={classes.root}>
-							<CardActionArea>
-								<CardMedia
-									component="img"
-									alt="Photographs"
-									height="270"
-								/>
-								<CardContent className={classes.nameOfProducts}>
-									<Typography>
-										<p className={classes.productlistNAmes}>
-											<b>{number.brand}</b>
-											<br />
-											<small>
-												{number.productName}
-											</small>
-											<br></br>
-											<b>Rs.{number.amount}</b>
-										</p>
-									</Typography>
-								</CardContent>
-							</CardActionArea>
+							<Link to={`/selected-product/${id}`} key={number.id}>
+								<CardActionArea>
+									<CardMedia
+										component="img"
+										alt="Photographs"
+										height="240"
+										image={number.productImage}
+									/>
+									<CardContent className={classes.nameOfProducts}>
+										<Typography>
+											<p className={classes.productlistNAmes}>
+												<b>{number.brand}</b>
+												<br />
+												<small>
+													{number.productName}
+												</small>
+												<br></br>
+												<b>Rs.{number.amount}</b>
+											</p>
+										</Typography>
+									</CardContent>
+								</CardActionArea>
+							</Link>
 							<CardActions className={classes.iconimg}>
 								<FavoriteIcon />
 								<ShoppingCartIcon />

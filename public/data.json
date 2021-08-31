@@ -2,66 +2,276 @@
 	{
 		"id": "1",
 		"productName": "Polka Dot Printed Shirt Dress",
-		"productImage": "../src/images/shirtdress.jpg",
+		"productImage": "https://images.unsplash.com/photo-1609505848912-b7c3b8b4beda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80",
 		"brand": "Tokyo Talkies",
 		"amount": "699",
-		"material": "Polyster"
+		"material": "Polyster",
+		"category": "womensWear"
 	},
 	{
 		"id": "2",
 		"productName": "FLoral Printed A-Line Dress",
-		"productImage": "",
+		"productImage": "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
 		"brand": "Harpa",
 		"amount": "849",
-		"material": "Polyster"
+		"material": "Polyster",
+		"category": "womensWear"
 	},
 	{
 		"id": "3",
 		"productName": "Power Shoulder Top",
-		"productImage": "",
+		"productImage": "https://images.unsplash.com/photo-1609505848912-b7c3b8b4beda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80",
 		"brand": "Athena",
 		"amount": "675",
-		"material": "Polyster"
+		"material": "Polyster",
+		"category": "womensWear"
 	},
 	{
 		"id": "4",
 		"productName": "JumpSuits",
-		"productImage": "",
+		"productImage": "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
 		"brand": "H&M",
 		"amount": "1000",
-		"material": "Cotton Blend"
+		"material": "Cotton Blend",
+		"category": "womensWear"
 	},
 	{
 		"id": "5",
 		"productName": "Trousers",
-		"productImage": "",
+		"productImage": "https://images.unsplash.com/photo-1609505848912-b7c3b8b4beda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80",
 		"brand": "Vero Moda",
 		"amount": "1200",
-		"material": "Rayon"
+		"material": "Rayon",
+		"category": "womensWear"
 	},
 	{
 		"id": "6",
 		"productName": "Straight Fit Jeans",
-		"productImage": "",
+		"productImage": "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
 		"brand": "Vero Moda",
 		"amount": "1200",
-		"material": "Rayon"
+		"material": "Rayon",
+		"category": "womensWear"
 	},
 	{
 		"id": "7",
 		"productName": "Shirt",
-		"productImage": "",
+		"productImage": "https://images.unsplash.com/photo-1609505848912-b7c3b8b4beda?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80",
 		"brand": "Vero Moda",
 		"amount": "1200",
-		"material": "Rayon"
+		"material": "Rayon",
+		"category": "womensWear"
 	},
 	{
 		"id": "8",
-		"productName": "Kurti",
-		"productImage": "",
-		"brand": "Vero Moda",
-		"amount": "1200",
-		"material": "Rayon"
+		"productName": "Foundation",
+		"productImage": "https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80",
+		"brand": "Bobbie Brown",
+		"amount": "500",
+		"Shade":"beige brown",
+		"category":"beauty"
+	},
+	{
+		"id": "9",
+		"productName": "Skin Finish HighLighter",
+		"productImage": "https://images.unsplash.com/photo-1619352520635-e7287253d2ee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80",
+		"brand": "M.A.C",
+		"amount": "3100",
+		"Shade":"Show Gold",
+		"category":"beauty"
+	},
+	{
+		"id": "10",
+		"productName": "9 to 5 SPF 30 Complexion Care Cream- Honey 30 g",
+		"productImage": "https://images.unsplash.com/photo-1596704017254-9b121068fb31?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80",
+		"brand": "Lakeme",
+		"amount": "239",
+    "Shade":"Almond,Honey",
+		"category":"beauty"
+	},
+	{
+		"id": "11",
+		"productName": "Cheek Tint",
+		"productImage": "https://images.unsplash.com/photo-1608571423539-e951b9b3871e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=328&q=80",
+		"brand": "Benefit Cosmetics",
+		"amount": "2442",
+		"Shade":"Rose",
+		"category":"beauty"
+	},
+	{
+		"id": "12",
+		"productName": "Whirlpool Refrigirator",
+		"productImage": "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80",
+		"brand": "Whirlpool",
+		"amount": "20000",
+		"category":"electronics"
+	},
+	{
+		"id": "13",
+		"productName": "LG Washing Machine",
+		"productImage": "https://images.unsplash.com/photo-1622660658381-36fbe69d909a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+		"brand": "LG",
+		"amount": "15000",
+		"category":"electronics"
+	},
+	{
+		"id": "14",
+		"productName": "Hp Laptop",
+		"productImage": "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80",
+		"brand": "HP",
+		"amount": "12000",
+		"category":"electronics"
+	},
+	{
+		"id": "15",
+		"productName": "Cieling Fan",
+		"productImage": "https://images.unsplash.com/photo-1622660658381-36fbe69d909a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+		"brand": "Ravi Fans",
+		"amount": "1000",
+		"category":"electronics"
+	},
+	{
+		"id": "16",
+		"productName": "Wall Decor",
+		"productImage": "https://cdn.pixabay.com/photo/2016/01/19/16/49/picture-frames-1149414_960_720.jpg",
+		"brand": "999Store",
+		"amount": "1699",
+		"color": "White ,Blue, Grey",
+    "material":"Canvas",
+		"category":"homeDecor"
+	},
+	{
+		"id": "17",
+		"productName": "Wall DEcor",
+		"productImage": "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+		"brand": "Art Street",
+		"amount": "849",
+    "color": "White,Green,Black",
+    "material":"Canvas",
+		"category":"homeDecor"
+	},
+	{
+		"id": "18",
+		"productName": "Set of 3 Brown & Black Beautiful Large Wall Mirror",
+		"productImage": "https://cdn.pixabay.com/photo/2016/01/19/16/49/picture-frames-1149414_960_720.jpg",
+		"brand": "Art Street",
+		"amount": "675",
+		"material": "Glass & MDF",
+    "color": "White,Brown,Black",
+		"category":"homeDecor"
+	},
+	{
+		"id": "19",
+		"productName": "Green Artificial Single Stem Plant With Ruby Pot",
+		"productImage": "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+		"brand": "Fancy Mart",
+		"amount": "1000",
+		"material": "PVC",
+		"category":"homeDecor"
+	},
+	{
+		"id": "20",
+		"productName": "Skirt & Top",
+		"productImage": "https://cdn.pixabay.com/photo/2017/12/13/09/23/model-3016384_960_720.jpg",
+		"brand": "Tokyo Talkies",
+		"amount": "699",
+		"material": "Polyster",
+		"category":"kidsWear"
+	},
+	{
+		"id": "21",
+		"productName": "FLoral Printed Dress",
+		"productImage": "https://images.unsplash.com/photo-1599624427857-461fd60c23e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80",
+		"brand": "Harpa",
+		"amount": "849",
+		"material": "Polyster",
+		"category":"kidsWear"
+	},
+	{
+		"id": "22",
+		"productName": "Dungree",
+		"productImage": "https://cdn.pixabay.com/photo/2017/12/13/09/23/model-3016384_960_720.jpg",
+		"brand": "Athena",
+		"amount": "675",
+		"material": "Polyster",
+		"category":"kidsWear"
+	},
+	{
+		"id": "23",
+		"productName": "FLared Jeans",
+		"productImage": "https://images.unsplash.com/photo-1599624427857-461fd60c23e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80",
+		"brand": "H&M",
+		"amount": "1000",
+		"material": "Cotton Blend",
+		"category":"kidsWear"
+	},
+	{
+		"id": "24",
+		"productName": "Shirt",
+		"productImage": "https://images.unsplash.com/photo-1523205565295-f8e91625443b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80",
+		"brand": "ZARA",
+		"amount": "699",
+		"material": "Polyster",
+		"category":"mensWear"
+	},
+	{
+		"id": "25",
+		"productName": "Baggy Jeans",
+		"productImage": "https://images.unsplash.com/photo-1537261131936-3cdff36a1ac9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80",
+		"brand": "H&M",
+		"amount": "849",
+		"material": "Polyster",
+		"category":"mensWear"
+	},
+	{
+		"id": "26",
+		"productName": "Sweat Shirt",
+		"productImage": "https://images.unsplash.com/photo-1523205565295-f8e91625443b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80",
+		"brand": "Vera Moda",
+		"amount": "675",
+		"material": "Polyster",
+		"category":"mensWear"
+	},
+	{
+		"id": "27",
+		"productName": "Denim Jacket",
+		"productImage": "https://images.unsplash.com/photo-1537261131936-3cdff36a1ac9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=334&q=80",
+		"brand": "H&M",
+		"amount": "1000",
+		"material": "Cotton Blend",
+		"category":"mensWear"
+	},
+	{
+		"id": "28",
+		"productName": "Realme 7 pro",
+		"productImage": "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+		"amount": "20000",
+		"category":"mobile"
+	},
+	{
+		"id": "29",
+		"productName": "Poco X2",
+		"productImage": "https://5.imimg.com/data5/ER/KR/GJ/SELLER-15139884/vivo-mobile-phones-500x500.jpg",
+		"brand": "xiaomi",
+		"amount": "16000",
+		"category":"mobile"
+	},
+	{
+		"id": "30",
+		"productName": "Redmi Note 9 pro",
+		"productImage": "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80s",
+		"brand": "Xiaomi",
+		"amount": "14000",
+		"category":"mobile"
+	},
+	{
+		"id": "31",
+		"productName": "Samsung M-31 S",
+		"productImage": "https://5.imimg.com/data5/ER/KR/GJ/SELLER-15139884/vivo-mobile-phones-500x500.jpg",
+		"brand": "Samsung",
+		"amount": "25000",
+		"category":"mobile"
 	}
+	
 
 ]

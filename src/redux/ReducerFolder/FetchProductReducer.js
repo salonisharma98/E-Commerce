@@ -10,7 +10,9 @@ const initialState = {
 	error: ""
 }
 const FetchProductReducer = (state = initialState, action) => {
+	console.log(action.type,"action")
 	switch (action.type) {
+		
 		case FETCH_PRODUCTS_REQUEST:
 			return {
 				loading: "true",
