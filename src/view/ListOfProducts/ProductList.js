@@ -14,6 +14,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ProductOptions from '../Common/ProductOptions';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import {addToCart} from '../../redux/ActionsFolder/CartAction';
 
 const useStyles = makeStyles({
 	root: {
@@ -41,15 +42,19 @@ const useStyles = makeStyles({
 	linkcolor:{
 		color:"black",
 		textDecoration:"none"
+	},
+	pointer:{
+		cursor:"pointer"
 	}
 });
 
-const ProductList = ({cartItems,setCartItems}) => {
+const ProductList = () => {
 
 	const classes = useStyles();
 
 	const statesss = useSelector(state => state.userReducer.data);
-
+	const cartProduct = useSelector(state => state.Cart.cartItems)
+	
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -66,14 +71,10 @@ const ProductList = ({cartItems,setCartItems}) => {
 			getCategorizedProducts.push(e)
 		}
 	})
-
-	// const onAdd = (getCategorizedProducts) => {
-  //   console.log('we are in onadd', getCategorizedProducts)
-	// 	getCategorizedProducts.map(function(e,i){
-	// 		setCartItems([...cartItems, e.id])
-	// 		//localStorage.setItem("cart", cartItems)
-	// 	})
-  // }
+	
+	const onAdd=()=>{
+		dispatch(addToCart(getCategorizedProducts))
+	}
 
 	return (
 		<div>
@@ -106,13 +107,13 @@ const ProductList = ({cartItems,setCartItems}) => {
 								</CardActionArea>
 							</Link>
 							<CardActions className={classes.iconimg}>
-								<div>
+								<div className={classes.pointer}>
 								<FavoriteIcon />
 								</div>
-								<div >
+								<div onClick={onAdd} className={classes.pointer}>
 								<ShoppingCartIcon/>
 								</div>
-								<div>
+								<div className={classes.pointer}>
 								<ShareIcon />
 								</div>
 							</CardActions>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, Grid, TextField } from '@material-ui/core';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import { makeStyles } from '@material-ui/core/styles';
-import shoulderTop from '../../images/shoulderTop.jpeg';
 // import SizeDropdown from './SizeDropdown';
 // import QuantityButton from './QuantityButton';
 import Table from '@material-ui/core/Table';
@@ -10,7 +9,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
+import { removeFromCart } from '../../redux/ActionsFolder/CartAction'
 import './styles.css'
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   cartBtn: {
@@ -27,13 +28,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Cart = ({cartItems,setCartItems,onAdd}) => {
+const Cart = () => {
 
   const classes = useStyles();
   const [address, setAddress] = useState("");
   const [size, setSize] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  //const [qty, setQty] = useState(1)
+
+  const cartItems = useSelector(state => state.Cart.cartItems)
+
+  cartItems.map((e, i) => {
+    //console.log(e[0], "EEE")
+  })
+
+  const dispatch = useDispatch()
+  // const [qty, setQty] = useState(count)
 
   // const onDecrese = () => {
   //   if(qty>1){
@@ -53,15 +62,16 @@ const Cart = ({cartItems,setCartItems,onAdd}) => {
   //   }
   // }
 
-  const handleChange = (event) => {
-    setSize(event.target.value);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleOpen = () => {
-    setOpen(true);
-  };
+
+  // const handleChange = (event) => {
+  //   setSize(event.target.value);
+  // };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
   const onAddressType = (e) => {
     setAddress(e.target.value)
   }
@@ -70,29 +80,35 @@ const Cart = ({cartItems,setCartItems,onAdd}) => {
     <div>
       <Grid container className="AddressContainer">
         <Grid item>
-          <PinDropIcon className="pinIcon"/>
+          <PinDropIcon className="pinIcon" />
         </Grid>
         <Grid item>
           <TextField id="input-with-icon-grid" value={address} placeholder="Address" onChange={onAddressType} />
         </Grid>
       </Grid>
-      <Grid container className="cart"> 
-      		{cartItems.map((number) =>
-            <Grid item xs={8} className="detailOfProductAdded">
-            <img src={number.productImage} alt="Product" className="ProductIMG" />
-            <div>
-              <h1 className="heading1">{number.brand}</h1>
-              <p>{number.productName}</p>
-              <p>Total of Rs {number.amount}</p>
-              <div className="qtyAndSize">
-                {/* <SizeDropdown size={size} open={open} handleChange={handleChange} handleClose={handleClose} handleOpen={handleOpen} /> */}
-                {/* <QuantityButton qty={qty} onDecrese={onDecrese} onIncrease={onIncrease} /> */}
+      <Grid container className="cart">
+        <Grid item xs={8} className="detailOfProductAdded">
+          {cartItems.map((val) =>
+            <Grid container className="CartProduct">
+              <img src={val[0].productImage} alt="Product" className="ProductIMG" />
+              <div>
+                <h3 className="heading1">{val[0].brand}</h3>
+                <p>{val[0].productName}</p>
+                <p>Total of Rs {val[0].amount}</p>
+                <div className="quantity">
+                  <p> Qty</p>
+                  <button className='qtyBtn'>-</button>
+                  <p>{val.count}</p>
+                  <button className='qtyBtn'>+</button>
+                </div>
+                <Button className={classes.cartBtn} onClick={() => {
+                  dispatch(removeFromCart(val))
+                }}>Remove</Button>
+                <Button className={classes.cartBtn}>Place Order</Button>
               </div>
-              <Button className={classes.cartBtn}>Remove</Button>
-              <Button className={classes.cartBtn}>Place Order</Button>
-            </div>
-          </Grid>
-          )}                   	      
+            </Grid>
+          )}
+        </Grid>
         <Grid item xs={4} className="productTotal">
           <div className="bottomdiv" />
           <div className="bottomdiv2" />
@@ -107,7 +123,7 @@ const Cart = ({cartItems,setCartItems,onAdd}) => {
                       <TableCell align="left" >
                         Price()
                       </TableCell>
-                      <TableCell align="right">{}</TableCell>
+                      <TableCell align="right">{ }</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell align="left" >
@@ -116,7 +132,7 @@ const Cart = ({cartItems,setCartItems,onAdd}) => {
                       <TableCell align="right">{size}</TableCell>
                     </TableRow>
                     <TableRow></TableRow>
-                    <TableRow> 
+                    <TableRow>
                       <TableCell align="left" >
                         Discount
                       </TableCell>
@@ -143,7 +159,7 @@ const Cart = ({cartItems,setCartItems,onAdd}) => {
           <div className="bottomdiv2" />
           <div className="bottomdiv" />
         </Grid>
-        
+
       </Grid>
     </div>
   )

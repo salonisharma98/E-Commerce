@@ -10,42 +10,30 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  useLocation
 } from "react-router-dom";
 
+
 function App() {
-
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(()=>{
-    console.log('cart',cartItems)
-    localStorage.setItem('cart',JSON.stringify(cartItems))
-  },[cartItems])
-
-  useEffect(()=>{
-    const savedProduct=JSON.parse(localStorage.getItem('cart'))
-    if(savedProduct){
-      setCartItems(savedProduct)
-    }
-  },[])
   
   return (
     <Router>
       <SearchAppBar />
       <Switch>
         <Route path={`/product/:categoryProduct`}>
-          <ProductList cartItems={cartItems} setCartItems={setCartItems}/>
+          <ProductList/>
         </Route>
         <Route path={`/selected-product/:ids`}>
-          <ProducSelected cartItems={cartItems} setCartItems={setCartItems}  />
+          <ProducSelected />
         </Route>
         <Route path='/cart'>
-          <Cart cartItems={cartItems} setCartItems={setCartItems} />
+          <Cart />
         </Route>
         <Route path='/'>
           <Home />
         </Route>
       </Switch>
-      <Footer />
+    <Footer/> 
     </Router>
   );
 }

@@ -7,6 +7,7 @@ import { fetchProductsData } from '../../redux/ActionsFolder/Action';
 import { useParams } from 'react-router';
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
+import {addToCart} from '../../redux/ActionsFolder/CartAction';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -75,11 +76,12 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const ProducSelected = ({cartItems,setCartItems}) => {
+const ProducSelected = () => {
 	const classes = useStyles();
 
 	const details = useSelector(state => state.userReducer.data)
-
+	const cartItems = useSelector(state => state.Cart.cartItems)
+	
 	const dispatch = useDispatch()
 
 	const [delievery, setDelievery] = useState('')
@@ -98,20 +100,13 @@ const ProducSelected = ({cartItems,setCartItems}) => {
 		setDelievery(e.target.value)
 	}
 
-	const onAdd = (detailedProducts) => {
-    console.log('we are in onadd', detailedProducts)
-		detailedProducts.map(function(e,i){
-			setCartItems([...cartItems, e])
-			//localStorage.setItem('cartItems',JSON.stringify(cartItems))
-		})
-  }
-
 	useEffect(() => {
 		dispatch(fetchProductsData())
 	}, [])
 
 	return (
 		<div>
+			<ProductOptions/>
 			{detailedProducts.map((number) =>
 				<Grid container className={classes.gridSelectedProduct}>
 					<Grid item xs={4} className={classes.gridCOntainer}>
@@ -141,7 +136,7 @@ const ProducSelected = ({cartItems,setCartItems}) => {
 								<Avatar className={classes.avtarColor} >XXL</Avatar>
 							</div>
 						</div>
-						<Button className={classes.finalAddToCartBTN} onClick={()=>onAdd(detailedProducts)}>Add To Cart</Button>
+						<Button className={classes.finalAddToCartBTN} onClick={()=>dispatch(addToCart(detailedProducts))}>Add To Cart</Button>
 						<Button className={classes.finalAddToCartBTN}>Add to Wishlist</Button>
 						<hr />
 						<h3>Delievery Options</h3>
