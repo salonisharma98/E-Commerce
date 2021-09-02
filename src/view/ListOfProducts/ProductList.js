@@ -38,14 +38,17 @@ const useStyles = makeStyles({
 	iconimg: {
 		backgroundColor: "burlywood"
 	},
+	linkcolor:{
+		color:"black",
+		textDecoration:"none"
+	}
 });
 
-const ProductList = () => {
+const ProductList = ({cartItems,setCartItems}) => {
 
 	const classes = useStyles();
 
 	const statesss = useSelector(state => state.userReducer.data);
-	console.log(statesss, "statesss")
 
 	const dispatch = useDispatch();
 
@@ -54,15 +57,23 @@ const ProductList = () => {
 	}, [])
 
 	const categoryProduct = useParams()
-	const id=useParams()
 
 	let getCategorizedProducts = []
 
+		
 	statesss.map(function (e, i) {
 		if (e.category === categoryProduct.categoryProduct) {
 			getCategorizedProducts.push(e)
 		}
 	})
+
+	// const onAdd = (getCategorizedProducts) => {
+  //   console.log('we are in onadd', getCategorizedProducts)
+	// 	getCategorizedProducts.map(function(e,i){
+	// 		setCartItems([...cartItems, e.id])
+	// 		//localStorage.setItem("cart", cartItems)
+	// 	})
+  // }
 
 	return (
 		<div>
@@ -71,7 +82,7 @@ const ProductList = () => {
 				<li>
 					{getCategorizedProducts.map((number) =>
 						<Card className={classes.root}>
-							<Link to={`/selected-product/${id}`} key={number.id}>
+							<Link to={`/selected-product/${number.id}`} key={number.id} className={classes.linkcolor}>
 								<CardActionArea>
 									<CardMedia
 										component="img"
@@ -95,9 +106,15 @@ const ProductList = () => {
 								</CardActionArea>
 							</Link>
 							<CardActions className={classes.iconimg}>
+								<div>
 								<FavoriteIcon />
-								<ShoppingCartIcon />
+								</div>
+								<div >
+								<ShoppingCartIcon/>
+								</div>
+								<div>
 								<ShareIcon />
+								</div>
 							</CardActions>
 						</Card>
 					)}

@@ -1,0 +1,51 @@
+.pinIcon{
+  margin-top: 9px
+}
+.AddressContainer {
+  height: 50px;
+  padding:20px
+}
+.ProductIMG{
+  width: 40%;
+  height: 60%;
+  object-fit: fill;
+  margin: 25px;
+}
+.detailOfProductAdded{
+  display: flex;
+  width: 100%;
+}
+.cart{
+ 
+ 
+}
+.heading1{
+  margin-top: 25px;
+  margin-bottom: -7px;
+}
+.qtyAndSize{
+  display: flex;
+}
+.PriceDetail{
+  box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 20%);
+  margin: auto;
+  height: 37vh;
+  width: 75%;
+}
+.priceDiv {
+  padding: 20px
+}
+.bottomdiv{
+  height: 4vh;
+  margin: auto;
+  width: 75%;
+  background-color: peru;
+  box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 20%);
+}
+.bottomdiv2{
+  height: 4vh;
+  background-color: burlywood;
+  margin: auto;
+  width: 75%;
+  box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 20%);
+}

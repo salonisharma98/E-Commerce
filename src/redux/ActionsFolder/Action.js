@@ -34,7 +34,6 @@ export const fetchProductsData = () => {
 		}).then((resp)=>{
 		  return resp.json()
 		}).then((data)=>{
-			console.log(data,"data")
 		  dispatch(fetchProductSuccess(data))
 			
 		}).catch((error)=>{console.log(error)

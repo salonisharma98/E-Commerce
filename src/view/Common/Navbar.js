@@ -9,6 +9,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PersonIcon from '@material-ui/icons/Person';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { Link } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   navcolor: {
@@ -68,6 +70,11 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchAppBar() {
 
   const classes = useStyles();
+  const history=useHistory();
+
+  const goToCart=()=>{
+    history.push('/cart')
+  }
 
   return (
     <div>
@@ -100,11 +107,13 @@ export default function SearchAppBar() {
               <br />
               Wishlist
             </div>
-            <div className={classes.iconsMargin}>
-              <ShoppingCartIcon />
+            
+            <div className={classes.iconsMargin} onClick={goToCart}>            
+              <ShoppingCartIcon/>              
               <br />
               Cart
             </div>
+           
             <div className={classes.iconsMargin}>
               <MoreVertIcon />
               <br />

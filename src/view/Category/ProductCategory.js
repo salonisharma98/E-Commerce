@@ -44,7 +44,6 @@ export default function ProductCategory() {
   const classes = useStyles();
 
   const states = useSelector(state => state.userReducer.data);
-  console.log(states, "states")
 
   const dispatch = useDispatch();
 
@@ -61,7 +60,7 @@ export default function ProductCategory() {
     "Home": "homeDecor",
     "KidsWear": "kidsWear"
   }
-
+  
   return (
     <div>
       <h1 className={classes.category}>Category</h1>
