@@ -12,7 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { addToCart, removeFromCart } from '../../redux/ActionsFolder/CartAction'
 import './styles.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { updateQTY } from '../../redux/ActionsFolder/CartAction'
+
 const useStyles = makeStyles((theme) => ({
   cartBtn: {
     backgroundColor: "burlywood",
@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Cart = () => {
 
-
   const classes = useStyles();
 
   const [address, setAddress] = useState('');
@@ -43,30 +42,26 @@ const Cart = () => {
 
   const dispatch = useDispatch()
 
-  const [CartTpe, setCartTpe] = useState()
-  console.log(CartTpe, '123')
-  // const increase = "increase"
-  // const decrease = "decrease"
-  useEffect(()=>{
+  const [CartType, setCartType] = useState('1')
 
-  },[CartTpe])
+  //  useEffect(()=>{
+  //   console.log(CartType,'in useEffect')
+  // },[CartType])
+  
   const onDecrese = (ev, product) => {
-     setCartTpe('decrease')
-    dispatch(addToCart(product, CartTpe))
-    // console.log(CartTpe, "CartYpe")
-     setCartTpe('')
+      setCartType('decrease')
+      dispatch(addToCart(product, CartType)) 
   }
 
   const onIncrease = (ev, product) => {
-    setCartTpe('increase')
-    dispatch(addToCart(product, CartTpe))
-    // console.log(CartTpe, "CartYpe")
-     setCartTpe('')
+      setCartType('increase')
+      dispatch(addToCart(product, CartType))
   }
 
   const onAddressType = (e) => {
     setAddress(e.target.value)
   }
+  
 
   return (
     <div>

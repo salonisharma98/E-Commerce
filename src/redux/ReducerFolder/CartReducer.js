@@ -4,7 +4,7 @@ export const CartReducer=(state={cartItems: JSON.parse(localStorage.getItem('car
   switch(action.type){
     case FETCH_CART_SUCCESS:
       return{
-        cartItems:action.payload.cartItems
+        cartItems:action.payload.cartItems      
       }
     case REMOVE_FROM_CART:
       return{

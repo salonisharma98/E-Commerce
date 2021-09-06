@@ -1,4 +1,4 @@
-import zIndex from '@material-ui/core/styles/zIndex';
+import { useEffect } from 'react';
 import {
   FETCH_CART_SUCCESS,
   REMOVE_FROM_CART
@@ -6,29 +6,23 @@ import {
 
  // product-product that we are going to add in cart
 
- export const addToCart=(product,CartTpe)=>(dispatch,getState)=>{
-   //console.log(CartTpe,"!!!!!!!TYPEe")
+ export const addToCart=(product,CartType)=>(dispatch,getState)=>{
   const cartItems=getState().Cart.cartItems
-  //console.log(CartTpe,'qty')
-  CartTpe = CartTpe || 'none'
+  CartType = CartType || ''
   let alreadyExist=false
-  //console.log(CartTpe,'Caert')
   cartItems.forEach(x=>{
-    console.log(x.count,"before")
     if(x.id===product.id){   
       alreadyExist=true;
-      if(CartTpe==='increase'){
-        x.count++
+      if(CartType==='increase'){
+         x.count++
       }
-      else if(CartTpe==='decrease'){
-        x.count--
+      else if(CartType==='decrease'){
+          x.count--
       }
       else{
         return x.count
       }
-    //  CartTpe ? x.count++ : x.count--
-      console.log(CartTpe,"TYPEe")
-    //   x.count++
+      // x.count++
       console.log(x.count,"after")
     }
   })
