@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "10px",
     marginRight: "10px",
     fontSize: "11px",
-    textAlign: "center"
+    textAlign: "center",
+    cursor:"pointer"
   },
   title: {
     marginRight: 50,
@@ -75,6 +76,9 @@ export default function SearchAppBar() {
   const goToCart=()=>{
     history.push('/cart')
   }
+  const goToWishlist=()=>{
+    history.push('/wishlist')
+  }
 
   return (
     <div>
@@ -102,12 +106,11 @@ export default function SearchAppBar() {
               <br />
               Login
             </div>
-            <div className={classes.iconsMargin}>
+            <div className={classes.iconsMargin} onClick={goToWishlist}>
               <FavoriteIcon />
               <br />
               Wishlist
-            </div>
-            
+            </div>        
             <div className={classes.iconsMargin} onClick={goToCart}>            
               <ShoppingCartIcon/>              
               <br />

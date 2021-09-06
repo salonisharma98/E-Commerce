@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Grid, TextField } from '@material-ui/core';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import { makeStyles } from '@material-ui/core/styles';
-// import SizeDropdown from './SizeDropdown';
+import SizeDropdown from './SizeDropdown';
 // import QuantityButton from './QuantityButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
-import { removeFromCart } from '../../redux/ActionsFolder/CartAction'
+import { addToCart, removeFromCart } from '../../redux/ActionsFolder/CartAction'
 import './styles.css'
 import { useDispatch, useSelector } from 'react-redux';
-
+import { updateQTY } from '../../redux/ActionsFolder/CartAction'
 const useStyles = makeStyles((theme) => ({
   cartBtn: {
     backgroundColor: "burlywood",
@@ -30,10 +30,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Cart = () => {
 
+
   const classes = useStyles();
-  const [address, setAddress] = useState("");
-  const [size, setSize] = React.useState('');
-  const [open, setOpen] = React.useState(false);
+
+  const [address, setAddress] = useState('');
 
   const cartItems = useSelector(state => state.Cart.cartItems)
 
@@ -42,36 +42,28 @@ const Cart = () => {
   })
 
   const dispatch = useDispatch()
-  // const [qty, setQty] = useState(count)
 
-  // const onDecrese = () => {
-  //   if(qty>1){
-  //   setQty(qty - 1)
-  //   }
-  //   else{
-  //     setQty(1)
-  //   }
-  // }
+  const [CartTpe, setCartTpe] = useState()
+  console.log(CartTpe, '123')
+  // const increase = "increase"
+  // const decrease = "decrease"
+  useEffect(()=>{
 
-  // const onIncrease = () => {
-  //   if(qty<10){
-  //   setQty(qty + 1)
-  //   }
-  //   else{
-  //     setQty(qty)
-  //   }
-  // }
+  },[CartTpe])
+  const onDecrese = (ev, product) => {
+     setCartTpe('decrease')
+    dispatch(addToCart(product, CartTpe))
+    // console.log(CartTpe, "CartYpe")
+     setCartTpe('')
+  }
 
+  const onIncrease = (ev, product) => {
+    setCartTpe('increase')
+    dispatch(addToCart(product, CartTpe))
+    // console.log(CartTpe, "CartYpe")
+     setCartTpe('')
+  }
 
-  // const handleChange = (event) => {
-  //   setSize(event.target.value);
-  // };
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
   const onAddressType = (e) => {
     setAddress(e.target.value)
   }
@@ -89,17 +81,18 @@ const Cart = () => {
       <Grid container className="cart">
         <Grid item xs={8} className="detailOfProductAdded">
           {cartItems.map((val) =>
-            <Grid container className="CartProduct">
-              <img src={val[0].productImage} alt="Product" className="ProductIMG" />
+            <Grid key={val.id} container className="CartProduct">
+              <img src={val.productImage} alt="Product" className="ProductIMG" />
               <div>
-                <h3 className="heading1">{val[0].brand}</h3>
-                <p>{val[0].productName}</p>
-                <p>Total of Rs {val[0].amount}</p>
+                <h3 className="heading1">{val.brand}</h3>
+                <p>{val.productName}</p>
+                <p>Total of Rs {val.amount}</p>
                 <div className="quantity">
-                  <p> Qty</p>
-                  <button className='qtyBtn'>-</button>
+                  <SizeDropdown />
+                  <p className="qty-text"> Qty</p>
+                  <button className='qtyBtn' onClick={(ev) => onDecrese(ev, val)} >-</button>
                   <p>{val.count}</p>
-                  <button className='qtyBtn'>+</button>
+                  <button className='qtyBtn' onClick={(ev) => onIncrease(ev, val)}>+</button>
                 </div>
                 <Button className={classes.cartBtn} onClick={() => {
                   dispatch(removeFromCart(val))
@@ -129,7 +122,7 @@ const Cart = () => {
                       <TableCell align="left" >
                         Size
                       </TableCell>
-                      <TableCell align="right">{size}</TableCell>
+                      <TableCell align="right">{ }</TableCell>
                     </TableRow>
                     <TableRow></TableRow>
                     <TableRow>

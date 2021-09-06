@@ -5,9 +5,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductsData } from '../../redux/ActionsFolder/Action';
 import { useParams } from 'react-router';
-import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
-import {addToCart} from '../../redux/ActionsFolder/CartAction';
+import { addToCart } from '../../redux/ActionsFolder/CartAction';
+import SizeDropdown from '../CartPage/SizeDropdown';
+import {addToWishlist} from '../../redux/ActionsFolder/WishListAction'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	finalAddToCartBTN: {
 		backgroundColor: "burlywood",
-		margin: "7px",
+		marginRight: "12px",
 		padding: "10px",
 		'&:hover': {
 			backgroundColor: 'burlywood',
@@ -72,16 +73,19 @@ const useStyles = makeStyles((theme) => ({
 		paddingLeft: "35px"
 	},
 	SizeDiv: {
-		display: "flex"
+		display: "flex",
+		marginBottom: "20px",
 	}
 }));
 
-const ProducSelected = () => {
+const ProducSelected = ({ handleChange, size,handleClose,handleOpen,open}) => {
+
 	const classes = useStyles();
 
 	const details = useSelector(state => state.userReducer.data)
 	const cartItems = useSelector(state => state.Cart.cartItems)
-	
+	const items=useSelector(state=>state.WishList.wishlistItems)
+
 	const dispatch = useDispatch()
 
 	const [delievery, setDelievery] = useState('')
@@ -89,12 +93,14 @@ const ProducSelected = () => {
 	const ids = useParams()
 
 	let detailedProducts = []
+	
 
 	details.map(function (e, i) {
 		if (e.id === ids.ids) {
 			detailedProducts.push(e)
 		}
 	})
+//	console.log(detailedProducts,'detai')
 
 	const onChangeText = (e) => {
 		setDelievery(e.target.value)
@@ -106,7 +112,7 @@ const ProducSelected = () => {
 
 	return (
 		<div>
-			<ProductOptions/>
+			<ProductOptions />
 			{detailedProducts.map((number) =>
 				<Grid container className={classes.gridSelectedProduct}>
 					<Grid item xs={4} className={classes.gridCOntainer}>
@@ -118,26 +124,11 @@ const ProducSelected = () => {
 						<hr />
 						<p><strong>Rs. {number.amount} </strong></p>
 						<p>inclusive of all taxes</p>
-						<p>Select Size</p>
 						<div className={classes.SizeDiv}>
-							<div className={classes.root} value='XS' >
-								<Avatar className={classes.avtarColor}>XS</Avatar>
-							</div>
-							<div className={classes.root} value="S">
-								<Avatar className={classes.avtarColor} >S</Avatar>
-							</div>
-							<div className={classes.root} value="L">
-								<Avatar className={classes.avtarColor} >L</Avatar>
-							</div>
-							<div className={classes.root} value="XL">
-								<Avatar className={classes.avtarColor} >XL</Avatar>
-							</div>
-							<div className={classes.root} value="XXL">
-								<Avatar className={classes.avtarColor} >XXL</Avatar>
-							</div>
+							<SizeDropdown  HandleChange={handleChange} Size={size} HandleClose={handleClose} HandleOpen={handleOpen} Open={open}/>
 						</div>
-						<Button className={classes.finalAddToCartBTN} onClick={()=>dispatch(addToCart(detailedProducts))}>Add To Cart</Button>
-						<Button className={classes.finalAddToCartBTN}>Add to Wishlist</Button>
+						<Button className={classes.finalAddToCartBTN} onClick={() => dispatch(addToCart(number))}>Add To Cart</Button>
+						<Button className={classes.finalAddToCartBTN} onClick={() => dispatch(addToWishlist(number))}>Add to Wishlist</Button>
 						<hr />
 						<h3>Delievery Options</h3>
 						<form className={classes.FormTextField} noValidate autoComplete="off">

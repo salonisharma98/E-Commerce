@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductsData } from '../../redux/ActionsFolder/Action';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +15,7 @@ import ProductOptions from '../Common/ProductOptions';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {addToCart} from '../../redux/ActionsFolder/CartAction';
+import {addToWishlist} from '../../redux/ActionsFolder/WishListAction'
 
 const useStyles = makeStyles({
 	root: {
@@ -51,6 +52,7 @@ const useStyles = makeStyles({
 const ProductList = () => {
 
 	const classes = useStyles();
+	//const [counter,setCounter]=useState(1)
 
 	const statesss = useSelector(state => state.userReducer.data);
 	const cartProduct = useSelector(state => state.Cart.cartItems)
@@ -65,15 +67,17 @@ const ProductList = () => {
 
 	let getCategorizedProducts = []
 
-		
 	statesss.map(function (e, i) {
 		if (e.category === categoryProduct.categoryProduct) {
 			getCategorizedProducts.push(e)
 		}
 	})
 	
-	const onAdd=()=>{
-		dispatch(addToCart(getCategorizedProducts))
+	const onAdd=(number)=>{
+		dispatch(addToCart(number))
+	}
+	const onWhislist=(number)=>{
+	dispatch(addToWishlist(number))
 	}
 
 	return (
@@ -107,10 +111,10 @@ const ProductList = () => {
 								</CardActionArea>
 							</Link>
 							<CardActions className={classes.iconimg}>
-								<div className={classes.pointer}>
+								<div className={classes.pointer} onClick={()=>onWhislist(number)}>
 								<FavoriteIcon />
 								</div>
-								<div onClick={onAdd} className={classes.pointer}>
+								<div onClick={()=>onAdd(number)} className={classes.pointer}>
 								<ShoppingCartIcon/>
 								</div>
 								<div className={classes.pointer}>

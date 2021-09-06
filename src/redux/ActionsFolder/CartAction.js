@@ -1,3 +1,4 @@
+import zIndex from '@material-ui/core/styles/zIndex';
 import {
   FETCH_CART_SUCCESS,
   REMOVE_FROM_CART
@@ -5,18 +6,30 @@ import {
 
  // product-product that we are going to add in cart
 
- export const addToCart=(product)=>(dispatch,getState)=>{
-
+ export const addToCart=(product,CartTpe)=>(dispatch,getState)=>{
+   //console.log(CartTpe,"!!!!!!!TYPEe")
   const cartItems=getState().Cart.cartItems
-  console.log(cartItems,'cartitems from local storage')
-  console.log(product,'product')
-
+  //console.log(CartTpe,'qty')
+  CartTpe = CartTpe || 'none'
   let alreadyExist=false
-
+  //console.log(CartTpe,'Caert')
   cartItems.forEach(x=>{
-    if(x[0].id===product[0].id){   
+    console.log(x.count,"before")
+    if(x.id===product.id){   
       alreadyExist=true;
-      x.count++;
+      if(CartTpe==='increase'){
+        x.count++
+      }
+      else if(CartTpe==='decrease'){
+        x.count--
+      }
+      else{
+        return x.count
+      }
+    //  CartTpe ? x.count++ : x.count--
+      console.log(CartTpe,"TYPEe")
+    //   x.count++
+      console.log(x.count,"after")
     }
   })
   if(!alreadyExist){
@@ -30,7 +43,7 @@ import {
  }
 
  export const removeFromCart=(product)=>(dispatch,getState)=>{
-  const cartItems=getState().Cart.cartItems.slice().filter((x)=>x[0].id !== product[0].id)
+  const cartItems=getState().Cart.cartItems.slice().filter((x)=>x.id !== product.id)
    dispatch({
      type:REMOVE_FROM_CART,
      payload:{cartItems},
