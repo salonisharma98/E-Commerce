@@ -10,7 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
 import { addToCart } from '../../redux/ActionsFolder/CartAction';
 import { useDispatch, useSelector } from 'react-redux';
-import {removeFromWishList} from '../../redux/ActionsFolder/WishListAction'
+import {removeFromWishList} from '../../redux/ActionsFolder/WishListAction';
+import {Link} from '@material-ui/core';
+import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles({
 	root: {
@@ -66,6 +68,7 @@ const Wishlist = () => {
       <li>
       {Product.map((val) =>
         <Card className={classes.root}>
+          <Link to={`/selected-product/${val.id}`} key={val.id} className={classes.linkcolor}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -87,6 +90,7 @@ const Wishlist = () => {
               </Typography>
             </CardContent>
           </CardActionArea>
+          </Link>
           <CardActions className={classes.iconimg}>
             <Button onClick={() => dispatch(addToCart(val))}>Add to Cart</Button>
            <Button onClick={() => {dispatch(removeFromWishList(val))}}>Remove</Button>

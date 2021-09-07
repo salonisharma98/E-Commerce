@@ -6,30 +6,20 @@ import ProductList from './view/ListOfProducts/ProductList';
 import ProducSelected from './view/SelectedProduct/ProductSelected';
 import Cart from './view/CartPage/Cart';
 import Wishlist from './view/WishlistPage/Whishlist';
+import {SetSize} from './redux/ActionsFolder/CartAction';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 
 function App() {
+  const dispatch=useDispatch()
 
-  const [size, setSize] = React.useState('');
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleChange = (event) => {
-    setSize(event.target.value);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
+  
   return (
     <Router>
       <SearchAppBar />
@@ -38,7 +28,7 @@ function App() {
           <ProductList />
         </Route>
         <Route path={`/selected-product/:ids`}>
-          <ProducSelected handleChange={handleChange} size={size} handleClose={handleClose} handleOpen={handleOpen} open={open}/>
+          <ProducSelected />
         </Route>
         <Route path='/cart'>
           <Cart />

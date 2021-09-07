@@ -7,7 +7,6 @@ import { fetchProductsData } from '../../redux/ActionsFolder/Action';
 import { useParams } from 'react-router';
 import TextField from '@material-ui/core/TextField';
 import { addToCart } from '../../redux/ActionsFolder/CartAction';
-import SizeDropdown from '../CartPage/SizeDropdown';
 import {addToWishlist} from '../../redux/ActionsFolder/WishListAction'
 
 const useStyles = makeStyles((theme) => ({
@@ -78,13 +77,13 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const ProducSelected = ({ handleChange, size,handleClose,handleOpen,open}) => {
+const ProducSelected = () => {
 
 	const classes = useStyles();
 
 	const details = useSelector(state => state.userReducer.data)
-	const cartItems = useSelector(state => state.Cart.cartItems)
-	const items=useSelector(state=>state.WishList.wishlistItems)
+	// const cartItems = useSelector(state => state.Cart.cartItems)
+	// const items=useSelector(state=>state.WishList.wishlistItems)
 
 	const dispatch = useDispatch()
 
@@ -100,7 +99,6 @@ const ProducSelected = ({ handleChange, size,handleClose,handleOpen,open}) => {
 			detailedProducts.push(e)
 		}
 	})
-//	console.log(detailedProducts,'detai')
 
 	const onChangeText = (e) => {
 		setDelievery(e.target.value)
@@ -125,7 +123,6 @@ const ProducSelected = ({ handleChange, size,handleClose,handleOpen,open}) => {
 						<p><strong>Rs. {number.amount} </strong></p>
 						<p>inclusive of all taxes</p>
 						<div className={classes.SizeDiv}>
-							<SizeDropdown  HandleChange={handleChange} Size={size} HandleClose={handleClose} HandleOpen={handleOpen} Open={open}/>
 						</div>
 						<Button className={classes.finalAddToCartBTN} onClick={() => dispatch(addToCart(number))}>Add To Cart</Button>
 						<Button className={classes.finalAddToCartBTN} onClick={() => dispatch(addToWishlist(number))}>Add to Wishlist</Button>

@@ -11,4 +11,6 @@ export const REMOVE_FROM_WISHLIST = "REMOVE_FROM_WISHLIST";
 export const INCREASE_TO_CART = "INCREASE_TO_CART";
 export const DECRESE_TO_CART = "DECRESE_TO_CART";
 
+export const SET_SIZE = "SET_SIZE";
+
 

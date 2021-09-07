@@ -3,7 +3,6 @@ import { Button, Grid, TextField } from '@material-ui/core';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import { makeStyles } from '@material-ui/core/styles';
 import SizeDropdown from './SizeDropdown';
-// import QuantityButton from './QuantityButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { addToCart, removeFromCart } from '../../redux/ActionsFolder/CartAction'
 import './styles.css'
 import { useDispatch, useSelector } from 'react-redux';
+import { UpdateQty, DecreaseQty } from '../../redux/ActionsFolder/CartAction'
 
 const useStyles = makeStyles((theme) => ({
   cartBtn: {
@@ -26,42 +26,31 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: 'none',
     },
   },
+  formControl: {
+    minWidth: 60,
+  },
 }))
 
 const Cart = () => {
 
   const classes = useStyles();
+  let total=0
 
   const [address, setAddress] = useState('');
 
   const cartItems = useSelector(state => state.Cart.cartItems)
 
-  cartItems.map((e, i) => {
+  cartItems.map((e, i,val) => {
     //console.log(e[0], "EEE")
+    total+=e.quantity*e.amount
   })
+  //console.log(total,'total')
 
   const dispatch = useDispatch()
-
-  const [CartType, setCartType] = useState('1')
-
-  //  useEffect(()=>{
-  //   console.log(CartType,'in useEffect')
-  // },[CartType])
-  
-  const onDecrese = (ev, product) => {
-      setCartType('decrease')
-      dispatch(addToCart(product, CartType)) 
-  }
-
-  const onIncrease = (ev, product) => {
-      setCartType('increase')
-      dispatch(addToCart(product, CartType))
-  }
 
   const onAddressType = (e) => {
     setAddress(e.target.value)
   }
-  
 
   return (
     <div>
@@ -83,11 +72,11 @@ const Cart = () => {
                 <p>{val.productName}</p>
                 <p>Total of Rs {val.amount}</p>
                 <div className="quantity">
-                  <SizeDropdown />
+                
                   <p className="qty-text"> Qty</p>
-                  <button className='qtyBtn' onClick={(ev) => onDecrese(ev, val)} >-</button>
-                  <p>{val.count}</p>
-                  <button className='qtyBtn' onClick={(ev) => onIncrease(ev, val)}>+</button>
+                  <button className='qtyBtn' onClick={() => { dispatch(DecreaseQty(val)) }}>-</button>
+                  <p>{val.quantity}</p>
+                  <button className='qtyBtn' onClick={() => { dispatch(UpdateQty(val)) }}>+</button>
                 </div>
                 <Button className={classes.cartBtn} onClick={() => {
                   dispatch(removeFromCart(val))
@@ -109,15 +98,19 @@ const Cart = () => {
                   <TableBody>
                     <TableRow>
                       <TableCell align="left" >
-                        Price()
+                        Price
                       </TableCell>
-                      <TableCell align="right">{ }</TableCell>
+                      <TableCell align="right">
+                      {cartItems.map((val) =>
+                        <p>{val.amount}*{val.quantity}</p>
+                      )}
+                      </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell align="left" >
-                        Size
+                        Total no. of product
                       </TableCell>
-                      <TableCell align="right">{ }</TableCell>
+                      <TableCell align="right">{cartItems.length}</TableCell>
                     </TableRow>
                     <TableRow></TableRow>
                     <TableRow>
@@ -135,8 +128,8 @@ const Cart = () => {
                     <TableRow>
                       <TableCell align="left" >
                         Total
-                      </TableCell>
-                      <TableCell align="right">76543</TableCell>
+                      </TableCell>                    
+                      <TableCell align="right"> {total}</TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>
